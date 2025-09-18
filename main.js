@@ -41,7 +41,7 @@ const returnSpeed = 0.05;
 
 // --- Load GLTF Model ---
 const loader = new GLTFLoader();
-loader.load('../public/webrevamp1.glb', (gltf) => {
+loader.load('..threejsstudies/public/webrevamp1.glb', (gltf) => {
   const model = gltf.scene;
   scene.add(model);
 
