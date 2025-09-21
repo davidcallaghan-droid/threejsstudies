@@ -41,7 +41,7 @@ const returnSpeed = 0.05;
 
 // --- Load GLTF Model ---
 const loader = new GLTFLoader();
-loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp1.glb', (gltf) => {
+loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp_4.glb', (gltf) => {
   const model = gltf.scene;
   scene.add(model);
 
