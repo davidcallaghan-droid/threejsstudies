@@ -6,11 +6,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const canvas = document.querySelector('#c');
+scene.fog = new THREE.Fog( 0x1B1B1B, 1, 1000 );
 
 const renderer = new THREE.WebGLRenderer({
     antialias: true,
     canvas,
-    alpha: true,
+    alpha: false,
   });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -41,7 +42,7 @@ const returnSpeed = 0.05;
 
 // --- Load GLTF Model ---
 const loader = new GLTFLoader();
-loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp_4.glb', (gltf) => {
+loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp1.glb', (gltf) => {
   const model = gltf.scene;
   scene.add(model);
 
@@ -91,13 +92,10 @@ window.addEventListener('pointermove', onPointerMove);
 window.addEventListener('click', onClick);
 
 // --- Light & Background ---
-const light = new THREE.AmbientLight(0xf0f4f9, 5);
+const light = new THREE.AmbientLight(0xf0f4f9, 1.5);
 scene.add(light);
 
-const loader2 = new THREE.TextureLoader();
-const bgTexture = loader2.load('./RSCO-Uncoated-Matchbookcopy.jpg');
-bgTexture.colorSpace = THREE.SRGBColorSpace;
-scene.background = bgTexture;
+
 
 // --- Animation Loop ---
 renderer.setAnimationLoop(() => {
