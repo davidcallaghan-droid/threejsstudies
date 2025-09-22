@@ -11,7 +11,7 @@ scene.fog = new THREE.Fog( 0x1B1B1B, 1, 1000 );
 const renderer = new THREE.WebGLRenderer({
     antialias: true,
     canvas,
-    alpha: false,
+    alpha: true,
   });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -92,8 +92,12 @@ window.addEventListener('pointermove', onPointerMove);
 window.addEventListener('click', onClick);
 
 // --- Light & Background ---
+<<<<<<< HEAD
 const light = new THREE.AmbientLight(0xf0f4f9, 3
 );
+=======
+const light = new THREE.AmbientLight(0xf0f4f9, 5);
+>>>>>>> 374756f4251b6bcdeab6ffa5935a21f5edd381f6
 scene.add(light);
 
 
