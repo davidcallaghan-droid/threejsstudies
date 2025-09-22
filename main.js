@@ -42,7 +42,7 @@ const returnSpeed = 0.05;
 
 // --- Load GLTF Model ---
 const loader = new GLTFLoader();
-loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp1.glb', (gltf) => {
+loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp_4.glb', (gltf) => {
   const model = gltf.scene;
   scene.add(model);
 
@@ -92,7 +92,8 @@ window.addEventListener('pointermove', onPointerMove);
 window.addEventListener('click', onClick);
 
 // --- Light & Background ---
-const light = new THREE.AmbientLight(0xf0f4f9, 1.5);
+const light = new THREE.AmbientLight(0xf0f4f9, 3
+);
 scene.add(light);
 
 
