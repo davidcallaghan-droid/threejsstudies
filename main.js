@@ -6,25 +6,35 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const canvas = document.querySelector('#c');
-scene.fog = new THREE.Fog( 0x1B1B1B, 1, 1000 );
+
+
 
 const renderer = new THREE.WebGLRenderer({
     antialias: true,
     canvas,
-    alpha: true,
+    alpha: false,
   });
 
-renderer.setSize(window.innerWidth, window.innerHeight);
+
 document.body.appendChild(renderer.domElement);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.domElement.style.display = 'block';
+
+scene.background = new THREE.Color(0x000000);
+
+const loaderOverlay = document.getElementById('loader');
+
+scene.fog = new THREE.Fog( 0x1B1B1B, 7, 15);
+
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.maxDistance = 40;
+controls.maxDistance = 5;
 controls.minDistance = 0.29;
-controls.maxPolarAngle = 1.55;
+controls.maxPolarAngle = 1.4;
 controls.rotateSpeed = 0.55;
 
-camera.position.set(0, 0.2, 0.4);
+camera.position.set(0.05, 0.2, 0.4);
 
 const clock = new THREE.Clock();
 let mixer = null;
@@ -42,11 +52,15 @@ const returnSpeed = 0.05;
 
 // --- Load GLTF Model ---
 const loader = new GLTFLoader();
-loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp_4.glb', (gltf) => {
+loader.load('https://davidcallaghan-droid.github.io/threejsstudies/public/webrevamp_5.glb', (gltf) => {
   const model = gltf.scene;
   scene.add(model);
 
   mixer = new THREE.AnimationMixer(model);
+
+    // ... your existing mixer setup ...
+    loaderOverlay.classList.add('hidden');
+    setTimeout(() => loaderOverlay.remove(), 1000);
 
   model.traverse((child) => {
     if (!child.isMesh) return; // Only process meshes
@@ -92,12 +106,9 @@ window.addEventListener('pointermove', onPointerMove);
 window.addEventListener('click', onClick);
 
 // --- Light & Background ---
-<<<<<<< HEAD
-const light = new THREE.AmbientLight(0xf0f4f9, 3
+const light = new THREE.AmbientLight(0xf0f4f9, 2
 );
-=======
-const light = new THREE.AmbientLight(0xf0f4f9, 5);
->>>>>>> 374756f4251b6bcdeab6ffa5935a21f5edd381f6
+
 scene.add(light);
 
 
