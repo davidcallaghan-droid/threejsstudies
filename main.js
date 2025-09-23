@@ -106,7 +106,7 @@ window.addEventListener('pointermove', onPointerMove);
 window.addEventListener('click', onClick);
 
 // --- Light & Background ---
-const light = new THREE.AmbientLight(0xf0f4f9, 2
+const light = new THREE.AmbientLight(0xf0f4f9, 3
 );
 
 scene.add(light);
