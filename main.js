@@ -33,6 +33,7 @@ controls.maxDistance = 5;
 controls.minDistance = 0.29;
 controls.maxPolarAngle = 1.4;
 controls.rotateSpeed = 0.55;
+controls.screenSpacePanning = false;
 
 camera.position.set(0.05, 0.2, 0.4);
 
